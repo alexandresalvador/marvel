@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <Navbar />
+    <div class="container">
+      <div class="row">
+        <div
+          class="col"
+          v-for="personagem in personagens"
+          :key="personagem.id">
+          <Card :personagem="personagem" />
+        </div>
+      </div>
+    </div>
+    <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from "@/components/Navbar.vue";
+import Card from "@/components/Card.vue";
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "App",
+  components: {
+    Navbar,
+    Card,
+  },
+  data() {
+    return {
+      personagens: [
+        {
+          id: 1,
+          name: "Hulk",
+          about: "Esmaga e cresce... birll!",
+          photo:
+            "https://i2.wp.com/www.multarte.com.br/wp-content/uploads/2019/03/hulk-png-sem-fundo9.png?fit=674%2C1024&ssl=1",
+        },
+        {
+          id: 2,
+          name: "Homem de ferro",
+          about: "Jarvis..",
+          photo: "https://2.bp.blogspot.com/-AHg84snN08A/V1IL3sI_OJI/AAAAAAAAEDc/UC7ahFmU7z8_m9PauTq4rQwuwaSJpIVfgCLcB/s1600/homemdsafas.png",
+        },
+        {
+          id: 3,
+          name: "Thor",
+          about: "Eu sou thor!..",
+          photo: "https://imagensemoldes.com.br/wp-content/uploads/2020/08/Pose-Thor-PNG.png",
+        },
+      ],
+    };
+  },
+};
+</script>
