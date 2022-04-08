@@ -14,9 +14,8 @@ export default {
   name: 'Card',
   props: {
       personagem: {
-          type: Object,
           required: true,
-      }
+      },
   }
 };
 </script>
